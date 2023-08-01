@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root } from "./routes/root";
-import { ErrorPage } from "./ErrorPage";
+import { ErrorPage } from "./routes/ErrorPage";
 import { Contact } from "./routes/Contact";
 import { Edit } from "./routes/Edit";
 import {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       {
         path: "contacts/:contactId/destroy",
         action: actionDestroy,
-        errorElement: <div>Oops! There was an error.</div>,
+        errorElement: <ErrorPage />,
       },
       {
         path: "contacts/:contactId/edit",
