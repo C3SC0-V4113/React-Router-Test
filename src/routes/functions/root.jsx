@@ -1,5 +1,5 @@
 import { redirect } from "react-router-dom";
-import { createContact, getContacts } from "../contacts";
+import { createContact, getContacts } from "../../helpers/contacts";
 
 export async function loaderRoot() {
   const contacts = await getContacts();

@@ -1,5 +1,5 @@
 import { redirect } from "react-router-dom";
-import { updateContact } from "../contacts";
+import { updateContact } from "../../helpers/contacts";
 
 export async function actionEdit({ request, params }) {
   const formData = await request.formData();
