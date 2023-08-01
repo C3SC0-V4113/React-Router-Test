@@ -3,37 +3,40 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root } from "./routes/root";
-import {
-  loader as rootLoader,
-  action as rootAction,
-} from "./routes/functions/root";
 import { ErrorPage } from "./ErrorPage";
-import { Contact, loader as contactLoader } from "./routes/Contact";
-import { Edit, action as editAction } from "./routes/Edit";
-import { action as destroyAction } from "./routes/Destroy";
+import { Contact } from "./routes/Contact";
+import { Edit } from "./routes/Edit";
+import {
+  actionDestroy,
+  actionEdit,
+  actionRoot,
+  loaderContacts,
+  loaderRoot,
+} from "./routes/functions";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    loader: rootLoader,
-    action: rootAction,
+    loader: loaderRoot,
+    action: actionRoot,
     children: [
       {
         path: "contacts/:contactId",
         element: <Contact />,
-        loader: contactLoader,
+        loader: loaderContacts,
       },
       {
         path: "contacts/:contactId/destroy",
-        action: destroyAction,
+        action: actionDestroy,
+        errorElement: <div>Oops! There was an error.</div>,
       },
       {
         path: "contacts/:contactId/edit",
         element: <Edit />,
-        loader: contactLoader,
-        action: editAction,
+        loader: loaderContacts,
+        action: actionEdit,
       },
     ],
   },
