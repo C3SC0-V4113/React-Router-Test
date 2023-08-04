@@ -2,6 +2,12 @@ import { getContact, updateContact } from "../../helpers/contacts";
 
 export async function loaderContacts({ params }) {
   const contact = await getContact(params.contactId);
+  if (!contact) {
+    throw new Response("", {
+      status: 404,
+      statusText: "Not Found",
+    });
+  }
   return contact;
 }
 
